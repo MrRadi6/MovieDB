@@ -25,9 +25,15 @@ extension BaseAPI {
                 }
                 switch response.result {
                 case .success(let data):
-                    if let data = data,
-                       let value = try? JSONDecoder().decode(T.self, from: data) {
-                        completion(.success(value))
+                    if let data = data {
+                        do {
+                            let value = try JSONDecoder().decode(T.self, from: data)
+                            completion(.success(value))
+                        } catch {
+                            dLog(error)
+                            completion(.failure(.unknown))
+                        }
+
                     } else {
                         completion(.failure(.unknown))
                     }

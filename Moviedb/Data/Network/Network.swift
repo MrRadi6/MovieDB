@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+/// https://developers.themoviedb.org/3/movies/get-movie-details
 enum Network {
     enum ContentType {
         static let json = "application/json"

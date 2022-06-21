@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MovieRequester {
-    func getPopularMovies(with page: Int)
-    func getTopRatedMovies(with page: Int)
-    func getMovieDetails(with id: Int)
+    func getPopularMovies(with page: Int, completion: @escaping (Result<MoviesDTO, BaseError>) -> Void)
+    func getTopRatedMovies(with page: Int, completion: @escaping (Result<MoviesDTO, BaseError>) -> Void)
+    func getMovieDetails(with id: Int, completion: @escaping (Result<MovieDetailsDTO, BaseError>) -> Void)
 }
