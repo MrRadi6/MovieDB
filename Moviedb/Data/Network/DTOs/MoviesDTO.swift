@@ -54,7 +54,7 @@ extension MovieDTO {
         return Movie(id: id,
                      title: title,
                      posterPath: path,
-                     releaseDate: releaseDate)
+                     releaseDate: DateManager.getDateFromAPI(string: releaseDate))
     }
 }
 

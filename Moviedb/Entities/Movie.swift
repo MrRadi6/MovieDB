@@ -11,5 +11,5 @@ struct Movie {
     let id: Int
     let title: String
     let posterPath: String?
-    let releaseDate: String
+    let releaseDate: Date?
 }

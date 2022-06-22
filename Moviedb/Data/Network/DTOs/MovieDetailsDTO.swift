@@ -34,6 +34,6 @@ extension MovieDetailsDTO {
                             posterPath: path,
                             overview: overview,
                             rating: rating,
-                            releaseDate: releaseDate)
+                            releaseDate: DateManager.getDateFromAPI(string: releaseDate))
     }
 }
