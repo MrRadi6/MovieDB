@@ -7,7 +7,7 @@
 
 import Alamofire
 
-enum MoviesRouter: BaseRouter {
+enum MoviesRequest: BaseReqeust {
     case popular(page: Int)
     case topRated(page: Int)
     case details(id: Int)
@@ -43,7 +43,7 @@ enum MoviesRouter: BaseRouter {
 }
 
 // MARK: - Constants
-extension MoviesRouter {
+extension MoviesRequest {
     enum Path {
         static let movie = "movie"
     }

@@ -9,3 +9,8 @@
 // MARK: - Globals
 "global_unkown_network_error" = "An error has been occuered!";
 "global_ok" = "OK";
+"global_back" = "back";
+
+// MARK: - Movies list
+"movie_list_popular_sort" = "Most Popular";
+"movie_list_rate_sort" = "Top Rated";

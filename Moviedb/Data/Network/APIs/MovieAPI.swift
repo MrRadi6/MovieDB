@@ -9,15 +9,15 @@ import Foundation
 
 struct MovieAPI: BaseAPI, MovieRequester {
     func getPopularMovies(with page: Int, completion: @escaping (Result<MoviesDTO, BaseError>) -> Void) {
-        makeAuthRequest(request: MoviesRouter.popular(page: page), completion: completion)
+        makeAuthRequest(request: MoviesRequest.popular(page: page), completion: completion)
     }
 
     func getTopRatedMovies(with page: Int, completion: @escaping (Result<MoviesDTO, BaseError>) -> Void) {
-        makeAuthRequest(request: MoviesRouter.topRated(page: page), completion: completion)
+        makeAuthRequest(request: MoviesRequest.topRated(page: page), completion: completion)
     }
 
     func getMovieDetails(with id: Int, completion: @escaping (Result<MovieDetailsDTO, BaseError>) -> Void) {
-        makeAuthRequest(request: MoviesRouter.details(id: id), completion: completion)
+        makeAuthRequest(request: MoviesRequest.details(id: id), completion: completion)
     }
 
 

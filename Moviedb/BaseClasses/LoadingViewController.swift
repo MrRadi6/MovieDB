@@ -11,7 +11,7 @@ class LoadingViewController: UIViewController {
 
     private var activityView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: .large)
-        view.color = .white
+        view.color = .accent
         view.hidesWhenStopped = true
         return view
     }()

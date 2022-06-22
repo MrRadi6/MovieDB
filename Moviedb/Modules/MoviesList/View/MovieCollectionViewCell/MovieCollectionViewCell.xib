@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MovieCollectionViewCell" customModule="Moviedb" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="260" height="434"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="260" height="434"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNU-tc-m0r" userLabel="ContainerView">
+                        <rect key="frame" x="1" y="0.0" width="258" height="433"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logo" translatesAutoresizingMaskIntoConstraints="NO" id="je6-YI-TGf">
+                                <rect key="frame" x="0.0" y="0.0" width="258" height="260"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ZCX-Sx-cFH">
+                                <rect key="frame" x="5" y="270" width="248" height="62.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Doctor Strange in the Multiverse of Madness" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1e-Or-yda">
+                                        <rect key="frame" x="0.0" y="0.0" width="248" height="43"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="May 04, 2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CMr-rB-fY1">
+                                        <rect key="frame" x="0.0" y="43" width="248" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="je6-YI-TGf" firstAttribute="height" secondItem="qNU-tc-m0r" secondAttribute="height" multiplier="0.6" id="2K5-lp-N1H"/>
+                            <constraint firstItem="ZCX-Sx-cFH" firstAttribute="leading" secondItem="qNU-tc-m0r" secondAttribute="leading" constant="5" id="3yh-wj-f8N"/>
+                            <constraint firstItem="je6-YI-TGf" firstAttribute="leading" secondItem="qNU-tc-m0r" secondAttribute="leading" id="BuE-Dw-Grb"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ZCX-Sx-cFH" secondAttribute="bottom" constant="5" id="XI8-1R-INR"/>
+                            <constraint firstAttribute="trailing" secondItem="je6-YI-TGf" secondAttribute="trailing" id="f5G-tE-f7E"/>
+                            <constraint firstAttribute="trailing" secondItem="ZCX-Sx-cFH" secondAttribute="trailing" constant="5" id="lZ5-74-Eir"/>
+                            <constraint firstItem="ZCX-Sx-cFH" firstAttribute="top" secondItem="je6-YI-TGf" secondAttribute="bottom" constant="10" id="pZl-eP-tyj"/>
+                            <constraint firstItem="je6-YI-TGf" firstAttribute="top" secondItem="qNU-tc-m0r" secondAttribute="top" id="vEd-iK-kzp"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" systemColor="systemGray4Color"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="qNU-tc-m0r" secondAttribute="trailing" constant="1" id="90d-jt-SLU"/>
+                <constraint firstAttribute="bottom" secondItem="qNU-tc-m0r" secondAttribute="bottom" constant="1" id="FiR-nZ-ZLd"/>
+                <constraint firstItem="qNU-tc-m0r" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Kgr-73-6e3"/>
+                <constraint firstItem="qNU-tc-m0r" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="l3L-v6-10l"/>
+            </constraints>
+            <size key="customSize" width="260" height="434"/>
+            <connections>
+                <outlet property="dateLabel" destination="CMr-rB-fY1" id="TeN-me-rKm"/>
+                <outlet property="posterImageView" destination="je6-YI-TGf" id="RU1-Va-Tba"/>
+                <outlet property="titleLabel" destination="G1e-Or-yda" id="9UH-Co-1hz"/>
+            </connections>
+            <point key="canvasLocation" x="237.68115942028987" y="16.071428571428569"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="ic_logo" width="133" height="133"/>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

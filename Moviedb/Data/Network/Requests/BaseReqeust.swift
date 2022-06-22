@@ -7,13 +7,13 @@
 
 import Alamofire
 
-protocol BaseRouter: URLRequestConvertible {
+protocol BaseReqeust: URLRequestConvertible {
     var method: HTTPMethod { get }
     var path: String { get }
     var parameters: Parameters? { get }
 }
 
-extension BaseRouter {
+extension BaseReqeust {
     func asURLRequest() throws -> URLRequest {
         let currentLanguage = LanguageManager().getCurrentAppLanguage().rawValue
         let queryItems = [URLQueryItem(name: Network.Parameter.language, value: currentLanguage)]

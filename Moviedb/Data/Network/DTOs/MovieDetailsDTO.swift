@@ -26,8 +26,12 @@ struct MovieDetailsDTO: Decodable {
 // MARK: - Transfer to domain
 extension MovieDetailsDTO {
     func transferToMovieDetails() -> MovieDetails {
+        var path: String?
+        if let posterPath = posterPath {
+            path = Network.URL.image + posterPath
+        }
         return MovieDetails(title: title,
-                            posterPath: posterPath,
+                            posterPath: path,
                             overview: overview,
                             rating: rating,
                             releaseDate: releaseDate)

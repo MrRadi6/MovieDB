@@ -16,5 +16,19 @@ extension UIViewController {
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
     }
+
+    func showActionSheet(title: String? = nil,
+                         message: String? = nil,
+                         actions: [UIAlertAction]) {
+        let alert = UIAlertController(title: title, message: message,
+                                      preferredStyle: .actionSheet)
+        for action in actions {
+            alert.addAction(action)
+        }
+        let dismissAction = UIAlertAction(title: "global_back".localized(),
+                                          style: .cancel)
+        alert.addAction(dismissAction)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 

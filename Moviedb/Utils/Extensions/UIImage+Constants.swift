@@ -9,4 +9,5 @@ import UIKit
 
 extension UIImage {
     static let logo = UIImage(named: "ic_logo")!
+    static let sort = UIImage(named: "ic_sort")!
 }

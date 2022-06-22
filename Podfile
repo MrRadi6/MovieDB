@@ -3,4 +3,5 @@
 
 target 'Moviedb' do
 pod 'Alamofire'
+pod 'Kingfisher', '~> 7.0'
 end

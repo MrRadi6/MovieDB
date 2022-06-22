@@ -14,6 +14,7 @@ enum Network {
 
     enum URL {
         static let baseUrl = "https://api.themoviedb.org/3"
+        static let image = "http://image.tmdb.org/t/p/w185"
     }
 
     enum Parameter {

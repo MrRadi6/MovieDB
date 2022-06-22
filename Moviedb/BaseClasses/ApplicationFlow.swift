@@ -18,7 +18,9 @@ class ApplicationFlow {
     }
 
     func showMoviesList() {
-
+        let moviesList = MoviesListRouter.createModule()
+        let navigationController = UINavigationController(rootViewController: moviesList)
+        setRootView(navigationController)
     }
 
     private func setRootView(_ viewController: UIViewController) {

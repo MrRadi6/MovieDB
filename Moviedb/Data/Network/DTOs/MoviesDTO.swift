@@ -25,14 +25,12 @@ struct MovieDTO: Decodable {
     let id: Int
     let title: String
     let posterPath: String?
-    let rating: Float
     let releaseDate: String
 
     enum CodingKeys: String, CodingKey {
         case id
         case title = "original_title"
         case posterPath = "poster_path"
-        case rating = "vote_average"
         case releaseDate = "release_date"
     }
 }
@@ -40,7 +38,7 @@ struct MovieDTO: Decodable {
 // MARK: - Transfer to domain
 extension MoviesDTO {
     func transferToMoviesPage() -> MoviesPage {
-        return MoviesPage(page: page,
+        return MoviesPage(number: page,
                           totalResults: totalResults,
                           totalPages: totalPages,
                           movies: movies.map({ $0.transferToMovie() }))
@@ -49,10 +47,13 @@ extension MoviesDTO {
 
 extension MovieDTO {
     func transferToMovie() -> Movie {
+        var path: String?
+        if let posterPath = posterPath {
+            path = Network.URL.image + posterPath
+        }
         return Movie(id: id,
                      title: title,
-                     posterPath: posterPath,
-                     rating: rating,
+                     posterPath: path,
                      releaseDate: releaseDate)
     }
 }

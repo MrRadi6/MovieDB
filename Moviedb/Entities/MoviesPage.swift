@@ -8,7 +8,7 @@
 import Foundation
 
 struct MoviesPage {
-    let page: Int
+    let number: Int
     let totalResults: Int
     let totalPages: Int
     let movies: [Movie]
