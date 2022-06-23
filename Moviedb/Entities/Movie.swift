@@ -13,3 +13,5 @@ struct Movie {
     let posterPath: String?
     let releaseDate: Date?
 }
+
+extension Movie: Equatable {}

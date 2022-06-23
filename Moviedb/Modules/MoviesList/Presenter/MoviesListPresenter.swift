@@ -68,33 +68,26 @@ extension MoviesListPresenter: MoviesListViewToPresenterProtocol {
 // MARK: - Conforming to MoviesListInteractorToPresenterProtocol
 extension MoviesListPresenter: MoviesListInteractorToPresenterProtocol {
     func didGetTopRatedMovies(_ movies: [Movie]) {
-        view.hideLoadingView { [unowned self] in
-            self.view.loadView(with: self.getMovieViewModels(from: movies))
-        }
+        view.hideLoadingView(completion: nil)
+        view.loadView(with: self.getMovieViewModels(from: movies))
     }
 
     func didGetMoreTopRatedMovies(_ movies: [Movie]) {
-        view.hideLoadingView { [unowned self] in
-            self.view.appendMovies(with: self.getMovieViewModels(from: movies))
-        }
+        view.appendMovies(with: self.getMovieViewModels(from: movies))
     }
 
     func didGetMostPopularMovies(_ movies: [Movie]) {
-        view.hideLoadingView { [unowned self] in
-            self.view.loadView(with: self.getMovieViewModels(from: movies))
-        }
+        view.hideLoadingView(completion: nil)
+        view.loadView(with: self.getMovieViewModels(from: movies))
     }
 
     func didGetMoreMostPopularMovies(_ movies: [Movie]) {
-        view.hideLoadingView { [unowned self] in
-            self.view.appendMovies(with: self.getMovieViewModels(from: movies))
-        }
+        view.appendMovies(with: self.getMovieViewModels(from: movies))
     }
 
     func failedToGetMovies(with error: String) {
-        view.hideLoadingView { [unowned self] in
-            self.view.showErrorMessage(title: nil, error: error)
-        }
+        view.hideLoadingView(completion: nil)
+        view.showErrorMessage(title: nil, error: error)
     }
 
     private func getMovieViewModels(from movies: [Movie]) -> [MovieViewModel] {
