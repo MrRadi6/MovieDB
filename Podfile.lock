@@ -1,24 +1,20 @@
 PODS:
   - Alamofire (5.5.0)
-  - HGCircularSlider (2.2.0)
   - Kingfisher (7.2.4)
 
 DEPENDENCIES:
   - Alamofire
-  - HGCircularSlider
   - Kingfisher (~> 7.0)
 
 SPEC REPOS:
   trunk:
     - Alamofire
-    - HGCircularSlider
     - Kingfisher
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
-  HGCircularSlider: afb1942743a2df156dcc7a3500216e523e14266b
   Kingfisher: 2457be2121734e69e54a2312ecc0150eb9ae70b3
 
-PODFILE CHECKSUM: 9a8b2f78ea3cb15064a9b8479992a772a489fcd9
+PODFILE CHECKSUM: b072c7a85ab21b2a3d1195d14fb1f43bc31f9782
 
 COCOAPODS: 1.11.3
