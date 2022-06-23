@@ -14,3 +14,7 @@
 // MARK: - Movies list
 "movie_list_popular_sort" = "Most Popular";
 "movie_list_rate_sort" = "Top Rated";
+
+// MARK: - Movie Details
+"movie_details_user_score_label" = "User Score";
+"movie_details_overview_label" = "Overview";

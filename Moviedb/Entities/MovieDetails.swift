@@ -12,5 +12,6 @@ struct MovieDetails {
     let posterPath: String?
     let overview: String?
     let rating: Float
+    let totalVotes: Int
     let releaseDate: Date?
 }

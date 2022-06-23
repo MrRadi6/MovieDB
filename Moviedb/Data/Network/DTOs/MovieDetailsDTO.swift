@@ -13,6 +13,7 @@ struct MovieDetailsDTO: Decodable {
     let overview: String?
     let rating: Float
     let releaseDate: String
+    let totalVotes: Int
 
     enum CodingKeys: String, CodingKey {
         case title = "original_title"
@@ -20,6 +21,7 @@ struct MovieDetailsDTO: Decodable {
         case overview
         case rating = "vote_average"
         case releaseDate = "release_date"
+        case totalVotes = "vote_count"
     }
 }
 
@@ -34,6 +36,7 @@ extension MovieDetailsDTO {
                             posterPath: path,
                             overview: overview,
                             rating: rating,
+                            totalVotes: totalVotes,
                             releaseDate: DateManager.getDateFromAPI(string: releaseDate))
     }
 }

@@ -20,7 +20,7 @@ class MoviesListRouter {
                                             router: router)
         view.presenter = presenter
         interactor.presenter = presenter
-        
+
         router.viewController = view
         return view
     }
@@ -28,6 +28,7 @@ class MoviesListRouter {
 
 extension MoviesListRouter: MoviesListPresenterToRouterProtocol {
     func openMovieDetails(with movieId: Int) {
-        dLog(movieId)
+        let detailsView = MovieDetailsRouter.createModule(with: movieId)
+        viewController?.show(detailsView, sender: nil)
     }
 }
