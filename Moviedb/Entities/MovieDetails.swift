@@ -15,3 +15,5 @@ struct MovieDetails {
     let totalVotes: Int
     let releaseDate: Date?
 }
+
+extension MovieDetails: Equatable {}

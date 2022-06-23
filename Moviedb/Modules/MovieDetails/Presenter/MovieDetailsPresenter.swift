@@ -34,14 +34,12 @@ extension MovieDetailsPresenter: MovieDetailsViewToPresenterProtocol {
 // MARK: - Conforming to MovieDetailsInteractorToPresenterProtocol
 extension MovieDetailsPresenter: MovieDetailsInteractorToPresenterProtocol {
     func didGetMovieDetails(_ movie: MovieDetails) {
-        view.hideLoadingView { [unowned self] in
-            self.view.updateView(with: MovieDetailsViewModel(movie: movie))
-        }
+        view.hideLoadingView(completion: nil)
+        view.updateView(with: MovieDetailsViewModel(movie: movie))
     }
 
     func failedToGetMovieDetails(with error: String) {
-        view.hideLoadingView { [unowned self] in
-            self.view.showErrorMessage(title: nil, error: error)
-        }
+        view.hideLoadingView(completion: nil)
+        view.showErrorMessage(title: nil, error: error)
     }
 }
