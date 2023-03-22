@@ -29,7 +29,7 @@ class MoviesListPresenterTests: XCTestCase {
         // When
         sut.viewDidAppear()
         // Then
-        XCTAssertTrue(interactor.isGetMostPopularMoviesCalled)
+        XCTAssertEqual(interactor.getMoviesCount, 1)
         XCTAssertTrue(view.isLoaderPresented)
     }
 
@@ -37,17 +37,8 @@ class MoviesListPresenterTests: XCTestCase {
         // When
         sut.reloadMovies()
         // Then
-        XCTAssertTrue(interactor.isGetMostPopularMoviesCalled)
+        XCTAssertEqual(interactor.getMoviesCount, 1)
         XCTAssertFalse(view.isLoaderPresented)
-    }
-
-    func testGetMoreMovies() {
-        // Given
-        sut.changeMovieFilter(to: .topRated)
-        // When
-        sut.getMoreMovies()
-        // Then
-        XCTAssertTrue(interactor.isGetMoreTopRatedMoviesCalled)
     }
 
     func testDidSelectMovie() {
@@ -62,56 +53,17 @@ class MoviesListPresenterTests: XCTestCase {
         XCTAssertEqual(router.movieId, movieId)
     }
 
-    func testDidGetTopRatedMovies() {
+    func testDidGetMovies() {
         // Given
         let movies: [Movie] = [MoviesMocks.movie]
         let dateString = DateManager.getMonthDayYear(from: movies[0].releaseDate)
         // When
-        sut.didGetTopRatedMovies(movies)
+        sut.didGetMovies(movies)
         // Then
         XCTAssertTrue(view.isLoaderDismissed)
         XCTAssertEqual(view.movies?[0].title, movies[0].title)
         XCTAssertEqual(view.movies?[0].imageUrl, movies[0].posterPath)
         XCTAssertEqual(view.movies?[0].releaseDate, dateString)
-    }
-
-    func testDidGetMoreTopRatedMovies() {
-        // Given
-        let movies: [Movie] = [MoviesMocks.movie]
-        let dateString = DateManager.getMonthDayYear(from: movies[0].releaseDate)
-        view.movies = [MovieViewModel(movie: MoviesMocks.movie)]
-        // When
-        sut.didGetMoreTopRatedMovies(movies)
-        // Then
-        XCTAssertEqual(view.movies?[1].title, movies[0].title)
-        XCTAssertEqual(view.movies?[1].imageUrl, movies[0].posterPath)
-        XCTAssertEqual(view.movies?[1].releaseDate, dateString)
-    }
-
-    func testDidGetMostPopularMovies() {
-        // Given
-        let movies: [Movie] = [MoviesMocks.movie]
-        let dateString = DateManager.getMonthDayYear(from: movies[0].releaseDate)
-        // When
-        sut.didGetMostPopularMovies(movies)
-        // Then
-        XCTAssertTrue(view.isLoaderDismissed)
-        XCTAssertEqual(view.movies?[0].title, movies[0].title)
-        XCTAssertEqual(view.movies?[0].imageUrl, movies[0].posterPath)
-        XCTAssertEqual(view.movies?[0].releaseDate, dateString)
-    }
-
-    func testDidGetMoreMostPopularMovies() {
-        // Given
-        let movies: [Movie] = [MoviesMocks.movie]
-        let dateString = DateManager.getMonthDayYear(from: movies[0].releaseDate)
-        view.movies = [MovieViewModel(movie: MoviesMocks.movie)]
-        // When
-        sut.didGetMoreMostPopularMovies(movies)
-        // Then
-        XCTAssertEqual(view.movies?[1].title, movies[0].title)
-        XCTAssertEqual(view.movies?[1].imageUrl, movies[0].posterPath)
-        XCTAssertEqual(view.movies?[1].releaseDate, dateString)
     }
 
     func testFailedToGetMovies() {

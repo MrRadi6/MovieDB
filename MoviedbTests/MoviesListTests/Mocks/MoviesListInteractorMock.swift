@@ -9,32 +9,13 @@ import Foundation
 @testable import Moviedb
 
 class MoviesListInteractorMock: MoviesListPresenterToInteractorProtocol {
-    var isGetTopRatedMoviesCalled = false
-    var isGetMoreTopRatedMoviesCalled = false
-    var isGetMostPopularMoviesCalled = false
-    var isGetMoreMostPopularMoviedCalled = false
+    var getMoviesCount = 0
     var hasMoreMovies: Bool?
     var movieId = 1
     var movieIndex: Int?
 
-    func getTopRatedMovies() {
-        isGetTopRatedMoviesCalled = true
-    }
-
-    func getMostPopularMovies() {
-        isGetMostPopularMoviesCalled = true
-    }
-
-    func getMoreTopRatedMovies() {
-        isGetMoreTopRatedMoviesCalled = true
-    }
-
-    func getMoreMostPopularMovies() {
-        isGetMoreMostPopularMoviedCalled = true
-    }
-
-    func canFetchMoreMovies() -> Bool {
-        return hasMoreMovies ?? false
+    func getMovies() {
+        getMoviesCount += 1
     }
 
     func getMovieId(at index: Int) -> Int {

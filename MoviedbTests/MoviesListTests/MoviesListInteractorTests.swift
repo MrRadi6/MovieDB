@@ -24,12 +24,12 @@ class MoviesListInteractorTests: XCTestCase {
         deinitModule()
     }
 
-    func testGetMostPopularMoviesSuccess() {
+    func testGetMoviesSuccess() {
         // Given
         let page = MoviesMocks.moviePage
         repository.moviesPage = page
         // When
-        sut.getMostPopularMovies()
+        sut.getMovies()
         // Then
         XCTAssertEqual(presenter.movies, page.movies)
     }
@@ -39,91 +39,20 @@ class MoviesListInteractorTests: XCTestCase {
         let error = BaseError.unknown
         repository.error = error
         // When
-        sut.getMostPopularMovies()
+        sut.getMovies()
         // Then
         XCTAssertEqual(presenter.error, error.message)
     }
 
-    func testGetMoreMostPopularMoviesSuccess() {
+    func testGetMovieIdAtIndex() {
         // Given
         let page = MoviesMocks.moviePage
         repository.moviesPage = page
+        sut.getMovies()
         // When
-        sut.getMoreMostPopularMovies()
+        let id = sut.getMovieId(at: 0)
         // Then
-        XCTAssertEqual(presenter.movies, page.movies)
-    }
-
-    func testGetMoreMostPopularMoviesFailed() {
-        // Given
-        let error = BaseError.unknown
-        repository.error = error
-        // When
-        sut.getMoreMostPopularMovies()
-        // Then
-        XCTAssertEqual(presenter.error, error.message)
-    }
-
-    func testGetTopRatedMoviesSuccess() {
-        // Given
-        let page = MoviesMocks.moviePage
-        repository.moviesPage = page
-        // When
-        sut.getTopRatedMovies()
-        // Then
-        XCTAssertEqual(presenter.movies, page.movies)
-    }
-
-    func testGetTopRatedMoviesFailed() {
-        // Given
-        let error = BaseError.unknown
-        repository.error = error
-        // When
-        sut.getTopRatedMovies()
-        // Then
-        XCTAssertEqual(presenter.error, error.message)
-    }
-
-    func testGetMoreTopRatedMoviesSuccess() {
-        // Given
-        let page = MoviesMocks.moviePage
-        repository.moviesPage = page
-        // When
-        sut.getMoreTopRatedMovies()
-        // Then
-        XCTAssertEqual(presenter.movies, page.movies)
-    }
-
-    func testGetMoreTopRatedMoviesFailed() {
-        // Given
-        let error = BaseError.unknown
-        repository.error = error
-        // When
-        sut.getMoreTopRatedMovies()
-        // Then
-        XCTAssertEqual(presenter.error, error.message)
-    }
-
-    func testCanFetchMoreWithMoreResultAvailable() {
-        // Given
-        let page = MoviesMocks.moviePage
-        repository.moviesPage = page
-        // When
-        sut.getTopRatedMovies()
-        let hasMorePages = sut.canFetchMoreMovies()
-        // Then
-        XCTAssertTrue(hasMorePages)
-    }
-
-    func testCanFetchMoreWithNoMoreResultAvailable() {
-        // Given
-        let page = MoviesMocks.moviePageNoMoreResults
-        repository.moviesPage = page
-        // When
-        sut.getTopRatedMovies()
-        let hasMorePages = sut.canFetchMoreMovies()
-        // Then
-        XCTAssertFalse(hasMorePages)
+        XCTAssertEqual(id, page.movies[0].id)
     }
 }
 

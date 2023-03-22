@@ -9,19 +9,13 @@ import Foundation
 @testable import Moviedb
 
 class MovieRepositoryMock: MovieRepositoryProtocol {
+
+
     var moviesPage: MoviesPage?
     var movieDetails: MovieDetails?
     var error: BaseError?
 
-    func getPopularMovies(with page: Int, completion: @escaping (Result<MoviesPage, BaseError>) -> Void) {
-        if let moviesPage = moviesPage {
-            completion(.success(moviesPage))
-        } else if let error = error {
-            completion(.failure(error))
-        }
-    }
-
-    func getTopRatedMovies(with page: Int, completion: @escaping (Result<MoviesPage, BaseError>) -> Void) {
+    func getMovies(completion: @escaping (Result<Moviedb.MoviesPage, Moviedb.BaseError>) -> Void) {
         if let moviesPage = moviesPage {
             completion(.success(moviesPage))
         } else if let error = error {
