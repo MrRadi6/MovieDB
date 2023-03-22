@@ -8,16 +8,17 @@
 import Foundation
 
 protocol MovieRepositoryProtocol {
-    func getPopularMovies(with page: Int, completion: @escaping (Result<MoviesPage, BaseError>) -> Void)
-    func getTopRatedMovies(with page: Int, completion: @escaping (Result<MoviesPage, BaseError>) -> Void)
+    func getMovies(completion: @escaping (Result<MoviesPage, BaseError>) -> Void)
     func getMovieDetails(with id: Int, completion: @escaping (Result<MovieDetails, BaseError>) -> Void)
 }
 
 struct MovieRepository: MovieRepositoryProtocol {
+
+
     let remote: MovieRequester
 
-    func getPopularMovies(with page: Int, completion: @escaping (Result<MoviesPage, BaseError>) -> Void) {
-        remote.getPopularMovies(with: page) { result in
+    func getMovies(completion: @escaping (Result<MoviesPage, BaseError>) -> Void) {
+        remote.getMovies(with: 1) { result in
             switch result {
             case .success(let moviesDTO):
                 let movies = moviesDTO.transferToMoviesPage()
@@ -27,19 +28,7 @@ struct MovieRepository: MovieRepositoryProtocol {
             }
         }
     }
-
-    func getTopRatedMovies(with page: Int, completion: @escaping (Result<MoviesPage, BaseError>) -> Void) {
-        remote.getTopRatedMovies(with: page) { result in
-            switch result {
-            case .success(let moviesDTO):
-                let movies = moviesDTO.transferToMoviesPage()
-                completion(.success(movies))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-
+    
     func getMovieDetails(with id: Int, completion: @escaping (Result<MovieDetails, BaseError>) -> Void) {
         remote.getMovieDetails(with: id) { result in
             switch result {

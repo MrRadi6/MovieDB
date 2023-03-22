@@ -27,30 +27,7 @@ class MoviesListViewController: BaseViewController {
     }
 
     private func setupUI() {
-        setupSortBarButton()
         setupMoviesCollectionView()
-    }
-
-    private func setupSortBarButton() {
-        let sortBarButtonItem = UIBarButtonItem(image: .sort,
-                                                style: .plain,
-                                                target: self,
-                                                action: #selector(handleSortButtonPressed))
-        navigationItem.rightBarButtonItems = [sortBarButtonItem]
-    }
-
-    @objc private func handleSortButtonPressed() {
-        let popularAction = UIAlertAction(title: "movie_list_popular_sort".localized(),
-                                          style: .default) { [weak self] _ in
-            guard let self = self else { return }
-            self.presenter.changeMovieFilter(to: .mostPopular)
-        }
-        let mostRatedAction = UIAlertAction(title: "movie_list_rate_sort".localized(),
-                                            style: .default) { [weak self] _ in
-            guard let self = self else { return }
-            self.presenter.changeMovieFilter(to: .topRated)
-        }
-        showActionSheet(actions: [popularAction, mostRatedAction])
     }
 
     private func setupMoviesCollectionView() {
@@ -108,14 +85,6 @@ extension MoviesListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         presenter.didSelectMovie(at: indexPath.item)
-    }
-
-    func collectionView(_ collectionView: UICollectionView,
-                        willDisplay cell: UICollectionViewCell,
-                        forItemAt indexPath: IndexPath) {
-        if indexPath.item == movies.count - 2 {
-            presenter.getMoreMovies()
-        }
     }
 }
 

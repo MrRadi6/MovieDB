@@ -16,6 +16,7 @@ extension BaseAPI {
     func makeAuthRequest<T: Decodable>(request: URLRequestConvertible,
                                        completion: @escaping (Result<T, BaseError>) -> Void) {
         let repository = AuthRepository(storage: UserStorage())
+        print(request.urlRequest)
         AF.request(request, interceptor: AuthInterceptor(repository: repository))
             .validate()
             .validate(contentType: [Network.ContentType.json])

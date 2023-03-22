@@ -16,6 +16,10 @@ struct MovieAPI: BaseAPI, MovieRequester {
         makeAuthRequest(request: MoviesRequest.topRated(page: page), completion: completion)
     }
 
+    func getMovies(with page: Int, completion: @escaping (Result<MoviesDTO, BaseError>) -> Void) {
+        makeAuthRequest(request: MoviesRequest.movies(page: page), completion: completion)
+    }
+
     func getMovieDetails(with id: Int, completion: @escaping (Result<MovieDetailsDTO, BaseError>) -> Void) {
         makeAuthRequest(request: MoviesRequest.details(id: id), completion: completion)
     }

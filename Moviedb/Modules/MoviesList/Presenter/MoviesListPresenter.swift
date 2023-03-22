@@ -13,7 +13,6 @@ class MoviesListPresenter {
     private let interactor: MoviesListPresenterToInteractorProtocol
     private let router: MoviesListPresenterToRouterProtocol
 
-    private var currentSortType: MovieSortType = .mostPopular
 
     init(view: MoviesListPresenterToViewProtocol,
          interactor: MoviesListPresenterToInteractorProtocol,
@@ -24,12 +23,7 @@ class MoviesListPresenter {
     }
 
     private func getMovies() {
-        switch currentSortType {
-        case .topRated:
-            interactor.getTopRatedMovies()
-        case .mostPopular:
-            interactor.getMostPopularMovies()
-        }
+        interactor.getMovies()
     }
 }
 
@@ -44,21 +38,6 @@ extension MoviesListPresenter: MoviesListViewToPresenterProtocol {
         getMovies()
     }
 
-    func getMoreMovies() {
-        switch currentSortType {
-        case .topRated:
-            interactor.getMoreTopRatedMovies()
-        case .mostPopular:
-            interactor.getMoreTopRatedMovies()
-        }
-    }
-
-    func changeMovieFilter(to filter: MovieSortType) {
-        currentSortType = filter
-        view.showLoadingView()
-        getMovies()
-    }
-
     func didSelectMovie(at index: Int) {
         let id = interactor.getMovieId(at: index)
         router.openMovieDetails(with: id)
@@ -67,32 +46,19 @@ extension MoviesListPresenter: MoviesListViewToPresenterProtocol {
 
 // MARK: - Conforming to MoviesListInteractorToPresenterProtocol
 extension MoviesListPresenter: MoviesListInteractorToPresenterProtocol {
-    func didGetTopRatedMovies(_ movies: [Movie]) {
+    func didGetMovies(_ movies: [Movie]) {
         view.hideLoadingView(completion: nil)
         view.loadView(with: self.getMovieViewModels(from: movies))
     }
-
-    func didGetMoreTopRatedMovies(_ movies: [Movie]) {
-        view.appendMovies(with: self.getMovieViewModels(from: movies))
-    }
-
-    func didGetMostPopularMovies(_ movies: [Movie]) {
-        view.hideLoadingView(completion: nil)
-        view.loadView(with: self.getMovieViewModels(from: movies))
-    }
-
-    func didGetMoreMostPopularMovies(_ movies: [Movie]) {
-        view.appendMovies(with: self.getMovieViewModels(from: movies))
+    
+    private func getMovieViewModels(from movies: [Movie]) -> [MovieViewModel] {
+        let viewModels = movies.map({ MovieViewModel(movie: $0)})
+        return viewModels
     }
 
     func failedToGetMovies(with error: String) {
         view.hideLoadingView(completion: nil)
         view.showErrorMessage(title: nil, error: error)
-    }
-
-    private func getMovieViewModels(from movies: [Movie]) -> [MovieViewModel] {
-        let viewModels = movies.map({ MovieViewModel(movie: $0)})
-        return viewModels
     }
 
 }
